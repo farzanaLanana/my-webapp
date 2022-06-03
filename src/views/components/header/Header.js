@@ -8,17 +8,20 @@ import logo from '../../../logo.svg';
 class Header extends Component {
   render() {
     return (
-      <Navbar bg="dark" variant="dark">
+      <Navbar collapseOnSelect expand="lg" sticky="top" bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">
-          <img src={logo} className="App-logo d-inline-block align-top" alt="logo" />
+          <Navbar.Brand href="/">
+          <img src={logo} className="App-logo d-inline-block align-top" alt="logo" width="50"
+        height="50" />
           My WebApp
           </Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link to={"/"} href="/">Home</Nav.Link>
-            <Nav.Link to={"/login"} href="/login">Login</Nav.Link>
-            <Nav.Link to={"/dashboard"} href="/dashboard">Dashboard</Nav.Link>
-          </Nav>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link to={"/"} href="/">Home</Nav.Link>
+              <Nav.Link to={"/dashboard"} href="/dashboard">Dashboard</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
         </Container>
       </Navbar>
     );

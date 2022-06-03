@@ -5,6 +5,7 @@ import Header from './views/components/header/Header';
 import Dashboard from './views/pages/Dashboard';
 import Login from './views/pages/Login';
 import Home from './views/pages/Home';
+import Products from './views/pages/Products';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -16,8 +17,8 @@ class App extends Component {
           <Header />
           <Routes>
             <Route exact path='/' exact element={<Home />} />
-            <Route path='/login' element={<Login />} />
             <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/products' element={<Products />} />
           </Routes>
         </div>
       </BrowserRouter>
