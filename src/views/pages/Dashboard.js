@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Header from '../components/header/Header';
 import Home from './Home';
 import Login from './Login';
+import Products from './Products';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../App.css';
 import logo from '../../logo.svg';
@@ -15,7 +16,7 @@ class Dashboard extends Component {
     super(props);
     this.state = {
       products: [],
-      DataisLoaded: false
+      DatailsLoaded: false
     };
   }
 
@@ -25,14 +26,14 @@ class Dashboard extends Component {
     .then((json) => {
       this.setState({
         products: json,
-        DataisLoaded: true
+        DatailsLoaded: true
       });
     })
   }
 
   render() {
-    const { DataisLoaded, products } = this.state;
-    if (!DataisLoaded) return <div>
+    const { DatailsLoaded, products } = this.state;
+    if (!DatailsLoaded) return <div>
     <Row className="mx-0 justify-content-md-center">
       <Col className="p-5 text-center">
         <Spinner className="mx-auto" animation="border" variant="warning" />
@@ -66,8 +67,8 @@ class Dashboard extends Component {
             </Card.Body>
           </Card>
           </Col>
-        ))
-}
+          ))
+        }
         </Row>
       </React.Fragment>
     );

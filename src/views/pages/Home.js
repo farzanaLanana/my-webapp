@@ -4,6 +4,7 @@ import { Button, Row, Col, Card, Form } from 'react-bootstrap';
 import Header from '../components/header/Header';
 import Login from './Login';
 import Dashboard from './Dashboard';
+import Products from './Products';
 import Image from 'react-bootstrap/Image'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../App.css';
