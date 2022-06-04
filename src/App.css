@@ -70,6 +70,10 @@
     height: 100px;
   }
 
+  .product-img {
+    height: 30vw;
+  }
+
   .p-md-2{
     padding: 0.5rem!important;
   }
