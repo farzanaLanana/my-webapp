@@ -38,12 +38,14 @@ class Header extends Component {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link to={"/"} href="/">Home</Nav.Link>
-              <Nav.Link to={"/dashboard"} href="/dashboard">Dashboard</Nav.Link>{
+              <Nav.Link to={"/"} href="/">Home</Nav.Link>{
               categories.map((category) => (
               <Nav.Link className="cat-title" to={'/category/'+category} href={'/category/'+category} key={category}>{category}</Nav.Link>
                 ))
               }
+            </Nav>
+            <Nav>
+              <Nav.Link to={"/login"} href="/login">Login</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

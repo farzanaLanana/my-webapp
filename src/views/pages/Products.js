@@ -1,19 +1,20 @@
 import React, { Component, useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import { Navbar, Container } from 'react-bootstrap';
-import { Button, Row, Col, Card, Form } from 'react-bootstrap';
+import { Button, Row, Col, Card, Form, Spinner } from 'react-bootstrap';
 import Image from 'react-bootstrap/Image'
 import Header from '../components/header/Header';
 import Login from './Login';
-import Dashboard from './Dashboard';
+import Home from './Home';
+import Category from './Category';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../App.css';
 import logo from '../../logo.svg';
 
 function Products() {
     const {id} = useParams();
+    const [detailsLoaded, setDetailsLoaded] = useState(false);
     const [product, setProduct] = useState([{ id: '', title: '', category: '', desc: '', price: '', image: '' }]);
-
 
     useEffect(() => {
       fetch('https://fakestoreapi.com/products/'+id)
@@ -27,11 +28,24 @@ function Products() {
           price: json.price,
           image: json.image
         })
+        setDetailsLoaded(true)
       }).catch((err) => {
         console.log(err);
       });
     }, []);
 
+    if (!detailsLoaded){
+      return(
+        <React.Fragment>
+        <Row className="mx-0 justify-content-md-center">
+          <Col className="p-5 text-center">
+            <Spinner className="mx-auto" animation="border" variant="warning" />
+            <h3 className="text-center"> Fetching information.... </h3>
+          </Col>
+        </Row>
+        </React.Fragment>
+      );
+    }
 
     return (
       <React.Fragment>

@@ -5,7 +5,8 @@ import { Button, Row, Col, Card, Form, Spinner } from 'react-bootstrap';
 import Image from 'react-bootstrap/Image'
 import Header from '../components/header/Header';
 import Login from './Login';
-import Dashboard from './Dashboard';
+import Home from './Home';
+import Products from './Products';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../App.css';
 import logo from '../../logo.svg';
@@ -42,17 +43,17 @@ function Category() {
 
     return (
       <React.Fragment>
-        <Row className="mx-0 justify-content-md-center p-5"> {
+        <Row className="mx-0 justify-content-md-center p-5 p-md-3"> {
           productList.map((product) => (
           <Col md={6} lg={3} className="p-3 d-flex align-items-stretch">
           <Card className="p-3" style={{ width: '100%' }} key={ product.id }>
             <Card.Img className="product-img" variant="top" src={ product.image } />
             <Card.Body className="d-flex flex-column">
-              <Card.Title><Link to={`/products/${product.id}`}>{ product.title }</Link></Card.Title>
+              <Card.Title><Link className="prod-name" to={`/products/${product.id}`}>{ product.title }</Link></Card.Title>
               <Card.Text>
                 <p>RM { product.price }</p>
               </Card.Text>
-              <Button className="btn btn-lg btn-block btn-primary mt-auto" variant="primary">Go somewhere</Button>
+              <Button className="btn btn-lg btn-block btn-primary mt-auto" variant="primary"><Link className="prod-btn" to={`/products/${product.id}`}>See More</Link></Button>
             </Card.Body>
           </Card>
           </Col>

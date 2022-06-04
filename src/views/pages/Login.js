@@ -3,40 +3,46 @@ import { BrowserRouter, Routes, Route, Switch, Link } from "react-router-dom";
 import { Navbar, Container } from 'react-bootstrap';
 import { Button, Row, Col, Card, Form } from 'react-bootstrap';
 import Header from '../components/header/Header';
-import Dashboard from './Dashboard';
 import Home from './Home';
+import Category from './Category';
+import Products from './Products';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../App.css';
 import logo from '../../logo.svg';
 
 class Login extends Component {
   render() {
-    return(
-        // <div className="App">
-          <Row className="mx-0 p-5">
+    return (
+      <React.Fragment>
+        <Row className="justify-content-md-center p-5">
+          <Col md={6} lg={4} className="d-flex align-items-stretch">
+          <Card className="bg-yellow w-100 bg-home-card">
+            <Card.Body></Card.Body>
+          </Card>
+          </Col>
+          <Col md={6} lg={4} className="px-lg-5 pb-5 px-md-2 d-flex align-items-stretch">
             <Form>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" />
-              <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-              </Form.Text>
-            </Form.Group>
+            <h3 className="pt-md-3">Account Login</h3>
+              <Form.Group className="mb-3 pt-3" controlId="formBasicEmail">
+                <Form.Label>Email address</Form.Label>
+                <Form.Control type="email" placeholder="Enter email" />
+                <Form.Text className="text-muted">
+                  We'll never share your email with anyone else.
+                </Form.Text>
+              </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-              <Form.Check type="checkbox" label="Check me out" />
-            </Form.Group>
-            <Button variant="primary" type="submit">
-              Submit
-            </Button>
-          </Form>
-          </Row>
-       // </div>
-    )
+              <Form.Group className="mb-3 pb-2" controlId="formBasicPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control type="password" placeholder="Password" />
+              </Form.Group>
+              <Button variant="primary" type="submit">
+                Submit
+              </Button>
+            </Form>
+          </Col>
+        </Row>
+      </React.Fragment>
+    );
   }
 }
 
