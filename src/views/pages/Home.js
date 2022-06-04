@@ -15,6 +15,7 @@ class Home extends Component {
   // Constructor
   constructor(props) {
     super(props);
+    localStorage.getItem("token")
     this.state = {
       products: [],
       DatailsLoaded: false
