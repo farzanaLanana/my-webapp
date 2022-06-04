@@ -33,6 +33,10 @@
   font-size: 12px;
 }
 
+.cat-title {
+  text-transform: capitalize;
+}
+
 @media only screen and (max-width: 768px) {
   .bg-home-card{
     height: 200px;

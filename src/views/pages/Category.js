@@ -1,63 +1,51 @@
-import React, { Component } from 'react';
-import { Navbar, Container, Spinner } from 'react-bootstrap';
-import { Button, Row, Col, Card } from 'react-bootstrap';
-import { Link } from "react-router-dom";
+import React, { Component, useState, useEffect } from 'react';
+import { Link, useParams } from "react-router-dom";
+import { Navbar, Container } from 'react-bootstrap';
+import { Button, Row, Col, Card, Form, Spinner } from 'react-bootstrap';
+import Image from 'react-bootstrap/Image'
 import Header from '../components/header/Header';
-import Home from './Home';
 import Login from './Login';
 import Dashboard from './Dashboard';
-import Products from './Products';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../App.css';
 import logo from '../../logo.svg';
 
-class Category extends Component {
-  // Constructor
-  constructor(props) {
-    super(props);
-    this.state = {
-      products: [],
-      DatailsLoaded: false
-    };
-  }
+function Category() {
+    const {category} = useParams();
+    const [detailsLoaded, setDetailsLoaded] = useState(false);
+    const [productList, setProductList] = useState();
 
-  componentDidMount() {
-    fetch("https://fakestoreapi.com/products?limit=12")
-    .then((res) => res.json())
-    .then((json) => {
-      this.setState({
-        products: json,
-        DatailsLoaded: true
+
+    useEffect(() => {
+      fetch('https://fakestoreapi.com/products/category/'+category)
+      .then((res) => res.json())
+      .then((json) => {
+        setProductList(json)
+        setDetailsLoaded(true)
+      }).catch((err) => {
+        console.log(err);
       });
-    })
-  }
+    }, []);
 
-  render() {
-    const { DatailsLoaded, products } = this.state;
-    if (!DatailsLoaded) return <div>
-    <Row className="mx-0 justify-content-md-center">
-      <Col className="p-5 text-center">
-        <Spinner className="mx-auto" animation="border" variant="warning" />
-        <h3 className="text-center"> Fetching products.... </h3>
-      </Col>
-    </Row>
-    </div> ;
+    if (!detailsLoaded){
+      return(
+        <React.Fragment>
+        <Row className="mx-0 justify-content-md-center">
+          <Col className="p-5 text-center">
+            <Spinner className="mx-auto" animation="border" variant="warning" />
+            <h3 className="text-center"> Fetching products.... </h3>
+          </Col>
+        </Row>
+        </React.Fragment>
+      );
+    }
 
     return (
       <React.Fragment>
-        <Row className="mx-0 justify-content-md-center">
-          <Col md={8} className="p-5">
-          <Card className="bg-yellow">
-            <Card.Body>
-              <h2 className="text-center">Welcome back, User! </h2>
-            </Card.Body>
-          </Card>
-          </Col>
-        </Row>
-        <Row className="mx-0 justify-content-md-center px-5 pb-5"> {
-          products.map((product) => (
+        <Row className="mx-0 justify-content-md-center p-5"> {
+          productList.map((product) => (
           <Col md={6} lg={3} className="p-3 d-flex align-items-stretch">
-          <Card className="p-3" style={{ width: '100%' }}>
+          <Card className="p-3" style={{ width: '100%' }} key={ product.id }>
             <Card.Img className="product-img" variant="top" src={ product.image } />
             <Card.Body className="d-flex flex-column">
               <Card.Title><Link to={`/products/${product.id}`}>{ product.title }</Link></Card.Title>
@@ -71,11 +59,9 @@ class Category extends Component {
           ))
         }
         </Row>
+
       </React.Fragment>
-    );
-  }
+    )
 }
-
-
 
 export default Category;

@@ -39,14 +39,11 @@ class Header extends Component {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link to={"/"} href="/">Home</Nav.Link>
-              <Nav.Link to={"/dashboard"} href="/dashboard">Dashboard</Nav.Link>
-              <Nav.Link to={"/products"} href="/products">Products</Nav.Link>
-              <NavDropdown title="Categories" id="collasible-nav-dropdown">{
-                categories.map((category) => (
-                <NavDropdown.Item href={'/category/'+category} >{category}</NavDropdown.Item>
+              <Nav.Link to={"/dashboard"} href="/dashboard">Dashboard</Nav.Link>{
+              categories.map((category) => (
+              <Nav.Link className="cat-title" to={'/category/'+category} href={'/category/'+category} key={category}>{category}</Nav.Link>
                 ))
               }
-              </NavDropdown>
             </Nav>
           </Navbar.Collapse>
         </Container>
