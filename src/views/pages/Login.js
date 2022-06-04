@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route, Switch, Link, useNavigate } from "react-r
 import { Navbar, Container, Alert, Spinner } from 'react-bootstrap';
 import { Button, Row, Col, Card, Form } from 'react-bootstrap';
 import Header from '../components/header/Header';
-import WithRouter from '../components/WithRouter';
 import Home from './Home';
 import Category from './Category';
 import Products from './Products';

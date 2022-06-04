@@ -1,7 +1,6 @@
 import React, { Component, useEffect, useState } from 'react';
 import { Navbar, NavDropdown, Nav, Container } from 'react-bootstrap';
 import { BrowserRouter, Router, Routes, Route, Switch, Link, useNavigate } from "react-router-dom";
-import { WithRouter } from '../WithRouter';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../../App.css';
 import logo from '../../../logo.svg';
