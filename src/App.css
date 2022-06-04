@@ -28,6 +28,11 @@
   left: 50%;
 }
 
+.prod-cat {
+  color: #ccc;
+  font-size: 12px;
+}
+
 @media only screen and (max-width: 768px) {
   .bg-home-card{
     height: 200px;

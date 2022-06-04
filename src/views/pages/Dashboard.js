@@ -28,7 +28,9 @@ class Dashboard extends Component {
         products: json,
         DatailsLoaded: true
       });
-    })
+    }).catch((err) => {
+      console.log(err);
+    });
   }
 
   render() {
@@ -56,7 +58,7 @@ class Dashboard extends Component {
         <Row className="mx-0 justify-content-md-center px-5 pb-5"> {
           products.map((product) => (
           <Col md={6} lg={3} className="p-3 d-flex align-items-stretch">
-          <Card className="p-3" style={{ width: '100%' }}>
+          <Card className="p-3" style={{ width: '100%' }} key={ product.id }>
             <Card.Img className="product-img" variant="top" src={ product.image } />
             <Card.Body className="d-flex flex-column">
               <Card.Title><Link to={`/products/${product.id}`}>{ product.title }</Link></Card.Title>

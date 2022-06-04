@@ -32,9 +32,8 @@ class Header extends Component {
       <Navbar collapseOnSelect expand="lg" sticky="top" bg="dark" variant="dark">
         <Container>
           <Navbar.Brand href="/">
-          <img src={logo} className="App-logo d-inline-block align-top" alt="logo" width="50"
-        height="50" />
-          My WebApp
+          <img src={logo} className="App-logo d-inline-block align-middle" alt="logo" width="50"
+        height="50" />My WebApp
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
