@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Navbar, NavDropdown, Nav, Container } from 'react-bootstrap';
-import { BrowserRouter, Router, Routes, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter, Router, Routes, Route, Switch, Link, useNavigate } from "react-router-dom";
+import { WithRouter } from '../WithRouter';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../../App.css';
 import logo from '../../../logo.svg';
@@ -9,6 +10,7 @@ class Header extends Component {
   // Constructor
   constructor(props) {
     super(props);
+    this.logout=this.logout.bind(this);
     this.state = {
       categories: [],
       DatailsLoaded: false
@@ -24,6 +26,18 @@ class Header extends Component {
         DatailsLoaded: true
       });
     })
+  }
+
+  logout(e) {
+    e.preventDefault();
+    localStorage.clear();
+    this.timer = setTimeout(() =>
+      this.props.navigation.navigate('/')
+    , 2000);
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.timer);
   }
 
   render() {
@@ -44,8 +58,14 @@ class Header extends Component {
                 ))
               }
             </Nav>
-            <Nav>
-              <Nav.Link to={"/login"} href="/login">Login</Nav.Link>
+            <Nav>{
+              localStorage.getItem("token") === null ? '' :
+              <Navbar.Text>Hi, {localStorage.getItem("username")}</Navbar.Text>
+            }{
+              localStorage.getItem("token") === null ?
+              <Nav.Link className="text-warning" to={"/login"} href="/login">Login</Nav.Link> :
+              <Nav.Link className="text-warning" onClick={this.logout}>Logout</Nav.Link>
+            }
             </Nav>
           </Navbar.Collapse>
         </Container>
